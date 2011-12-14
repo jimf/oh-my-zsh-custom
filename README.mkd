@@ -6,5 +6,8 @@ This is my custom/ directory for use with [oh-my-zsh](https://github.com/robbl/o
 Installation
 ------------
 
- 1. Install [oh-my-zsh](https://github.com/robbl/oh-my-zsh-config).
- 2. Clone this repo and copy/link the contents to ~/.oh-my-zsh/custom/.
+Install [oh-my-zsh](https://github.com/robbl/oh-my-zsh-config), then run the following:
+
+    $ git checkout git@github.com:jimf/oh-my-zsh-custom.git
+    $ cd oh-my-zsh-custom
+    $ rake install
