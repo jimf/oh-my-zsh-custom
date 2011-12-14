@@ -1,0 +1,10 @@
+oh-my-zsh custom/
+=================
+
+This is my custom/ directory for use with [oh-my-zsh](https://github.com/robbl/oh-my-zsh-config).
+
+Installation
+------------
+
+ 1. Install [oh-my-zsh](https://github.com/robbl/oh-my-zsh-config).
+ 2. Clone this repo and copy/link the contents to ~/.oh-my-zsh/custom/.
