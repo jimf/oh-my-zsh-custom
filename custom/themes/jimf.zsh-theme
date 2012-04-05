@@ -1,25 +1,29 @@
 setopt prompt_subst
 autoload -U colors && colors
-
-autoload -U add-zsh-hook
-autoload -Uz vcs_info
+autoload -U is-at-least
 
 # Inspired by http://briancarper.net/blog/570/git-info-in-your-zsh-prompt
-zstyle ':vcs_info:*' stagedstr '%F{green}✚'
-zstyle ':vcs_info:*' unstagedstr '%F{yellow}⚡'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' enable git
+if is-at-least 4.3.6; then
+    autoload -U add-zsh-hook
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' stagedstr '%F{green}✚'
+    zstyle ':vcs_info:*' unstagedstr '%F{yellow}⚡'
+    zstyle ':vcs_info:*' check-for-changes true
+    if builtin which -s git &>/dev/null; then
+        zstyle ':vcs_info:*' enable git
+    fi
 
-function jimf_precmd {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats '[%F{magenta}%b%c%u%F{black}]%F{reset}'
-    } else {
-        zstyle ':vcs_info:*' formats '[%F{magenta}%b%c%u%F{red}●%F{black}]%F{reset}'
+    function jimf_precmd {
+        if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+            zstyle ':vcs_info:*' formats '[%F{magenta}%b%c%u%F{black}]%F{reset}'
+        } else {
+            zstyle ':vcs_info:*' formats '[%F{magenta}%b%c%u%F{red}●%F{black}]%F{reset}'
+        }
+
+        vcs_info
     }
-
-    vcs_info
-}
-add-zsh-hook precmd jimf_precmd
+    add-zsh-hook precmd jimf_precmd
+fi
 
 # Define prompt.
 function set_prompt() {
