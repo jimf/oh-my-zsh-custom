@@ -1,4 +1,4 @@
-source $HOME/.oh-my-zsh/lib/completion.zsh
+source $HOME/.oh-my-zsh/lib/$(basename $0)
 
 # Complete packages.
 [ -d ~/svn/packages ] && compctl -g "~/svn/packages/*/(:t)" pkg

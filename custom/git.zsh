@@ -1,3 +1,3 @@
 if builtin which -s git &>/dev/null; then
-    source $HOME/.oh-my-zsh/lib/git.zsh
+    source $HOME/.oh-my-zsh/lib/$(basename $0)
 fi

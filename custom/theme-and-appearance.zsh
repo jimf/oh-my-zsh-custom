@@ -1,4 +1,4 @@
-source $HOME/.oh-my-zsh/lib/theme-and-appearance.zsh
+source $HOME/.oh-my-zsh/lib/$(basename $0)
 unsetopt cdablevars
 setopt NOCDABLEVARS
 setopt nohup
