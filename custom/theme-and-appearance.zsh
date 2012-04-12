@@ -1,4 +1,4 @@
-source $HOME/.oh-my-zsh/lib/$(basename $0)
+source $ZSH/lib/$(basename $0)
 unsetopt cdablevars
 setopt NOCDABLEVARS
 setopt nohup
