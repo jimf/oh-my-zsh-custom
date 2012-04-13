@@ -1,7 +1,5 @@
 autoload -U is-at-least
 if is-at-least 4.3.6; then
-    source $ZSH/lib/$(basename $0)
-
     function theme_command_precmd {
         # Output sudo commands in red
         if [[ "${1[0,4]}" = sudo ]]; then
