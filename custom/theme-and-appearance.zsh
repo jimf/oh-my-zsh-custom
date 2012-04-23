@@ -1,6 +1,6 @@
 autoload -U is-at-least
 if is-at-least 4.3.6; then
-    function theme_command_precmd {
+    function theme_command_preexec {
         # Output sudo commands in red
         if [[ "${1[0,4]}" = sudo ]]; then
             echo -ne '\e[0;31m'
@@ -13,7 +13,7 @@ if is-at-least 4.3.6; then
     }
 
     autoload -U add-zsh-hook
-    add-zsh-hook precmd theme_command_precmd
+    add-zsh-hook preexec theme_command_preexec
 fi
 
 unsetopt cdablevars
