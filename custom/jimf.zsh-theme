@@ -25,6 +25,16 @@ if is-at-least 4.3.6; then
     add-zsh-hook precmd jimf_precmd
 fi
 
+function spwd {
+    if [[ $PWD == $HOME* ]]; then
+        local spwd_="~${PWD#$HOME}"
+    else
+        local spwd_="$PWD"
+    fi
+
+    echo $spwd_ | sed 's%.*/\([^/]*/[^/]*/[^/]*\)$%➤ \1%'
+}
+
 # Define prompt.
 function set_prompt() {
     local name=""
@@ -51,9 +61,9 @@ function set_prompt() {
 
     ZSH_THEME_TIME="%{$fg_bold[yellow]%}%D{%H:%M}%{$fg[black]%}"
     ZSH_THEME_WHOAMI="${name}${host}"
-    ZSH_THEME_PWD="%{$fg[green]%}%3~%{$fg[black]%}"
+    ZSH_THEME_PWD="%{$fg[green]%}"'$(spwd)'"%{$fg[black]%}"
 
-    PROMPT='${ZSH_THEME_TIME} (${ZSH_THEME_WHOAMI}${ZSH_THEME_PWD})${vcs_info_msg_0_}${ZSH_THEME_PRIV} '
+    PROMPT='${ZSH_THEME_TIME} (${ZSH_THEME_WHOAMI}'${ZSH_THEME_PWD}')${vcs_info_msg_0_}${ZSH_THEME_PRIV} '
 }
 
 set_prompt
