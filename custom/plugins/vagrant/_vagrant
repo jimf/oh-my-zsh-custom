@@ -101,7 +101,7 @@ case $state in
       ;;
 
       (destroy|halt|dup|provision|reload|resume|ssh|ssh_config|suspend|up)
-          VAGRANTFILE="$HOME/svn/vagrant/Vagrantfile"
+          VAGRANTFILE="$HOME/git/puppet-vagrant/Vagrantfile"
           if [ -f $PWD/Vagrantfile ]; then
               VAGRANTFILE="$PWD/Vagrantfile"
           fi

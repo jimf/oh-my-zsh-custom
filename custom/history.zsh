@@ -1,6 +1,8 @@
 ## Command history configuration
 if [ -n "$SSH_TTY" ]; then
     HISTFILE="$HOME/.zshhist_${USER}_${HOST}"
+elif [ "`id -u`" -eq 0 ] && [[ "$TERM" = screen* ]]; then
+    HISTFILE="$HOME/.zshhist_${USER}_${HOST}"
 else
     HISTFILE="$HOME/.zshhist"
 fi
